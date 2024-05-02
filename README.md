@@ -4,12 +4,12 @@ Football Match Organizer is a web application designed to facilitate the organiz
 
 ## Features
 1. User Registration and Authentication:
- - Users can register for an account with a unique username, email, and phone number.
+ - Users can register for an account with a unique username, email, and phone number (mail validation, too).
  - Passwords are securely hashed using Werkzeug's password hashing utilities.
  - Account confirmation via email with unique tokens for verification.
  - Login functionality with error handling for invalid credentials.
 2. Slot Management:
- - Pitch owners (administrators) can add new slots specifying the date, time, and available spots.
+ - Pitch owners (gestori) can add new slots specifying the date, time, and available spots.
  - Slots are displayed with available spots on the user interface.
  - Pitch owners can delete existing slots.
 3. Slot Booking:
@@ -36,14 +36,3 @@ SQLite: The relational database management system used for data storage.
 JavaScript (AJAX): Asynchronous requests for retrieving and updating available slots dynamically.
 HTML/CSS: For frontend design and layout.
 Jinja2: Template engine for rendering dynamic content in Flask.
-
-## Installation and Usage
-Clone the repository to your local machine.
-Install the required dependencies listed in requirements.txt.
-Set up a virtual environment for isolation if desired.
-Configure the Flask application by setting the necessary environment variables (e.g., database URI, email server settings).
-Run the Flask application using python app.py.
-Access the application in your web browser at the specified URL.
-
-## Contribution Guidelines
-Contributions to improve the application are welcome! Feel free to fork the repository, make your changes, and submit a pull request. Please ensure that your code follows the existing coding style and conventions.
