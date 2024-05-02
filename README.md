@@ -3,24 +3,24 @@
 Football Match Organizer is a web application designed to facilitate the organization of football matches for pitch owners and to connect players with available slots. The application allows users to register, book slots for matches, manage their bookings, and provides administrators with tools to manage slots and user accounts.
 
 ## Features
-- User Registration and Authentication:
+1. User Registration and Authentication:
  - Users can register for an account with a unique username, email, and phone number.
  - Passwords are securely hashed using Werkzeug's password hashing utilities.
  - Account confirmation via email with unique tokens for verification.
  - Login functionality with error handling for invalid credentials.
-- Slot Management:
+2. Slot Management:
  - Pitch owners (administrators) can add new slots specifying the date, time, and available spots.
  - Slots are displayed with available spots on the user interface.
  - Pitch owners can delete existing slots.
-- Slot Booking:
+3. Slot Booking:
  - Registered users can view available slots and book spots for matches.
  - Users can cancel their bookings if needed, and the available spots are updated accordingly.
  - Error handling for booking slots with insufficient available spots.
-- Referral System:
+4. Referral System:
  - Users are provided with a referral code upon registration.
  - Referral bonuses are calculated for users based on the number of referrals who make bookings.
  - Referral codes are stored securely in the database.
-- Profile Management:
+5. Profile Management:
  - Users can view their profile information, including booked slots and referral bonuses.
  - Bonus points are updated in real-time based on successful referrals.
 
