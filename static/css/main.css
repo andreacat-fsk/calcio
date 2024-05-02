@@ -1,0 +1,386 @@
+/* Additional styles for the top banner */
+body {
+    background-color: #65674a; /* Set the background color */
+    margin: 0; /* Remove default margin */
+}
+
+
+.top-banner {
+    text-align: center; /* Center align the text */
+    font-size: 24px; /* Set the font size */
+    font-family: 'Your Desired Font', sans-serif; /* Specify the font family */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* Make the banner take the full height of the viewport */
+    margin: 0; /* Remove default margin */
+}
+
+.top-banner h1 {
+    font-size: 1.5em; /* Adjust the font size of the h1 element if needed */
+    margin-right: 10px;
+}
+
+.top-banner img {
+    max-height: 80px;
+}
+
+.top-banner {
+    background-color: #FFE94B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(46, 55, 0);
+    padding: 10px 0;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu li a {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: rgb(46, 55, 0);
+    color: white;
+    text-decoration: none;
+    border: 1px solid white; /* Add a border for a button-like appearance */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    transition: background-color 0.3s ease; /* Add a smooth transition on hover */
+}
+
+.menu li a:hover {
+    background-color: rgb(64, 77, 0); /* Change background color on hover */
+}
+
+.menu li.active a {
+    font-weight: bold;
+    /* You can customize the styles for the active link if needed */
+}
+
+/* Style for the footer */
+.site-footer {
+    background-color: #FFE94B;
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style for contact section */
+.contact {
+    margin-bottom: 20px;
+}
+
+.contact-item {
+    margin-bottom: 10px;
+}
+
+/* Style for navigation links */
+.navigation {
+    margin-bottom: 20px;
+}
+
+.navigation a {
+    color: black;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Style for social media links */
+.social a {
+    color: black;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+/* Style for footer bottom section */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin-bottom: 10px;
+}
+
+.back-to-top {
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* Aggiungi stili per la container del logo */
+.logo-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 506px; /* Imposta una larghezza massima per il logo */
+}
+
+/* Stili per il logo e la sua animazione */
+.logo {
+    width: 506px; /* Imposta le dimensioni dell'immagine del logo */
+    height: 506px;
+    position: relative;
+    border-radius: 50%; /* Rendi il logo circolare */
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    padding: 10px;
+}
+
+.logo:hover {
+    transform: rotateY(180deg);
+}
+
+.logo-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.logo-front,
+.logo-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.logo-back {
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background-color: hwb(68 0% 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;;
+    width: 506px; /* Imposta la larghezza al 100% */
+    height: 506px; /* Imposta l'altezza al 100% */
+    margin: 0; /* Assicurati che non ci siano margini esterni */
+}
+
+.logo-text {
+    text-align: center;
+    font-size: 30px; /* Imposta la dimensione del font desiderata */
+    margin-top: 20px; /* Aggiungi margine superiore per separare il testo dal logo */
+}
+
+/* Aggiungi stili per centrare e posizionare gli elementi */
+html, body {
+    height: 100%; /* Imposta altezza 100% per consentire il posizionamento */
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Imposta l'altezza minima a 100% della viewport */
+    padding-bottom: 100px; /* Assicura che il footer non venga coperto */
+}
+
+.gioca-ora-btn {
+    background-color: blue;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px; /* Adjust the margin-top to position the button down */
+}
+
+.gioca-ora-btn {
+    background-color: rgb(190, 169, 28);
+    color: black;
+    padding: 15px 30px;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px; /* Adjust the margin-top to position the button down */
+}
+
+/* Aggiungi stili per la galleria di immagini */
+.photo-gallery img {
+    max-width: 400px; /* Imposta la larghezza massima desiderata */
+    height: auto; /* Mantiene l'aspetto proporzionato */
+    margin: 5px; /* Aggiunge un margine tra le immagini */
+}
+
+/* Aggiungi stili per il video */
+.video-container video {
+    max-width: 100%; /* Assicura che il video si adatti al contenitore */
+    height: auto; /* Mantiene l'aspetto proporzionato */
+    margin-top: 10px; /* Aggiunge uno spazio tra la galleria di immagini e il video */
+    margin-left: auto;
+    margin-right:auto;
+}
+
+
+/* REGISTRATION PAGE*/
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 400px;
+    height: 550px;
+    font-size:25px;
+}
+
+.registration-form input {
+    width: 200px; /* Make the input elements full width */
+    padding: 10px; /* Add padding for better visual appearance */
+    margin-bottom: 15px; /* Adjust margin between input elements */
+    font-size: 16px; /* Adjust font size for input elements */
+}
+
+.registration-form input[type="submit"] {
+    background-color: #FFE94B; /* Yellow background color */
+    color: black; /* Black text color */
+    font-size: 20px; /* Adjust font size for the button */
+    padding: 15px; /* Increase padding for a larger button */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius for a rounded appearance */
+}
+/*LOGIN PAGE*/
+.login-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 400px;
+    height: 350px;
+    font-size:25px;
+}
+
+.login-form input {
+    width: 200px; /* Make the input elements full width */
+    padding: 10px; /* Add padding for better visual appearance */
+    margin-bottom: 15px; /* Adjust margin between input elements */
+    font-size: 16px; /* Adjust font size for input elements */
+}
+
+.login-form input[type="submit"] {
+    background-color: #FFE94B; /* Yellow background color */
+    color: black; /* Black text color */
+    font-size: 20px; /* Adjust font size for the button */
+    padding: 15px; /* Increase padding for a larger button */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius for a rounded appearance */
+}
+
+
+
+/* Additional styles for the top banner */
+body {
+    background-color: #65674a;
+    margin: 0;
+}
+
+/* ... (rest of your styles) */
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .logo:hover {
+        transform: none; /* Disable rotating effect on mobile devices */
+    }
+
+    /* Hide gallery on mobile devices */
+    .gallery-container {
+        display: none;
+    }
+
+    /* Add specific styles for smaller screens if needed */
+    .gioca-ora-btn {
+        font-size: 16px;
+    }
+
+
+    .top-banner img {
+        max-width: 100%; /* Make the logo responsive on mobile */
+    }
+
+    .menu ul {
+        flex-direction: column;
+        text-align: center; /* Center align menu items on mobile */
+    }
+    
+    .menu li {
+        margin: 0;
+    }
+
+    .menu li a {
+        display: block;
+        width: 100%; /* Make menu items full width on mobile */
+        margin: 5px 0; /* Add margin between menu items on mobile */
+    }
+
+    .login-form {
+        margin-top: 20px; /* Adjust margin for better spacing on smaller screens */
+    }
+
+    .container {
+        width: 100%; /* Make the container full width on mobile */
+    }
+
+    .registration-form {
+        margin-top: 20px; /* Adjust margin for better spacing on smaller screens */
+    }
+
+    #registration-form {
+        width: 100%; /* Make the form full width on mobile */
+    }
+
+    .container {
+        margin-top: 10px; /* Adjust margin for better spacing on smaller screens */
+    }
+
+    .container h1 {
+        font-size: 20px; /* Adjust font size for the main heading on smaller screens */
+    }
+
+    .container p {
+        font-size: 14px; /* Adjust font size for paragraphs on smaller screens */
+        margin-bottom: 8px; /* Add margin between paragraphs on smaller screens */
+    }
+
+    .container li {
+        font-size: 12px; /* Adjust font size for list items on smaller screens */
+        margin-bottom: 3px; /* Add margin between list items on smaller screens */
+    }
+
+    .container {
+        margin-top: 10px; /* Adjust margin for better spacing on smaller screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Adjust font size for the main heading on smaller screens */
+    }
+
+    .modal-content {
+        width: 90%; /* Adjust width for better responsiveness on smaller screens */
+    }
+
+    .slot {
+        margin: 5px;
+        padding: 5px;
+    }
+}

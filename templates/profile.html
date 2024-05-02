@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Profilo Utente</title>
+{% endblock %}
+
+{% block body %}
+{% if current_user.is_authenticated %}
+    <h1>Welcome, {{ user.username }}!</h1>
+    <br>
+    <p>Email: {{ user.email }}</p>
+    <p>Ecco il tuo codice referral: {{ user.referral_code }}</p>
+    <p>Invialo ai tuoi amici o inoltragli questo link! {{ url_for('register', referral=user.referral_code, _external=True) }}</p>
+    <p> Il tuo bonus è: {{ bonus }}</p>
+    <p>Quando avrai fatto iscrivere 5 amici, potrai giocare una partita gratis!</p>
+    <p>Clicca qui per le condizioni </p>
+
+    <h2>Le tue prenotazioni</h2>
+    <ul>
+        {% for subscription in subscriptions %}
+            {% if subscription.user_numero == current_user.numero %}
+                <li>Prenotazione ID: {{ subscription.id }} - Data: {{ subscription.slot.data }} - Orario: {{ subscription.slot.orario }} - Numero di giocatori: {{ subscription.numero_persone }} - Prenotato il: {{ subscription.prenotato_il }} - <a href="{{ url_for('disdici_prenotazione', subscription_id=subscription.id) }}">Disdici</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Please log in to access this page.</p>
+{% endif %}
+
+{% block messages %}
+    {{ super() }} 
+{% endblock %}
+
+<br>
+<a href="{{ url_for('index') }}">Torna alla Home</a>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Bologna Nel Pallone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        document.addEventListener('DOMContentLoaded', function () {
+            const logo = document.getElementById('logo');
+
+            logo.addEventListener('mouseenter', () => {
+                // Remove the rotation effect for mobile
+            });
+
+            logo.addEventListener('mouseleave', () => {
+                // Remove the rotation effect for mobile
+            });
+
+            logo.addEventListener('transitionend', () => {
+                // Remove the rotation effect for mobile
+            });
+        });
+
+        /* Mobile Styles */
+        @media only screen and (max-width: 768px) {
+            .logo {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .logo-inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo-front,
+            .logo-back {
+                width: 100%;
+                text-align: center;
+            }
+
+            .logo-image {
+                max-width: 100%;
+            }
+
+            .gallery-container {
+                display: none; /* Hide the gallery on mobile */
+            }
+        }
+
+        /* Desktop Styles */
+        @media only screen and (min-width: 769px) {
+            .gallery-container {
+                display: block; /* Show the gallery on desktop */
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <div class="logo-container">
+            <div class="logo" id="logo">
+                <div class="logo-inner">
+                    <div class="logo-front">
+                        <img src="{{ url_for('static', filename='/media/logo-index.PNG') }}" alt="Logo di BNP" class="logo-image">
+                    </div>
+                    <div class="logo-back">
+                        <div class="logo-text">
+                            La più grande community di calcetti a Bologna<br>
+                            Più di 300 partite giocate insieme, <br>
+                            3 tornei e 1100 membri nel gruppo!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <a href="{{ url_for('prenota_slot') }}" class="gioca-ora-btn">GIOCA ORA</a>
+        </div>
+        <div class="gallery-container">
+            <h2>Galleria</h2>
+            <div class="photo-gallery">
+                <!-- Add your gallery content here -->
+            </div>
+            <div class="video-container">
+                <!-- Add your video content here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

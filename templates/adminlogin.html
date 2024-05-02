@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Admin Log-in</title>
+{% endblock %}
+
+{% block body %}
+
+<form action="/adminlogin" class="loginform" method="post">
+    <br>
+    <h1 align="center">Admin Login</h1>
+<div class="container">
+    <label for="username"><b>Username</b></label>
+    <input id="username" name="username" placeholder="Username" required style="background-color: yellow;" type="text">
+    <br>
+    <label for="psw"><b>Password</b></label>
+    <input id="psw" name="psw" placeholder="Password" type="password" required style="background-color: yellow;">
+    <br>
+    <button type="submit">Login</button>    &nbsp;
+</div>        
+</form>
+
+
+{% endblock %}

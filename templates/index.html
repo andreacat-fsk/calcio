@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Bologna Nel Pallone</title>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const logo = document.getElementById('logo');
+      let isAnimating = false;
+  
+      logo.addEventListener('mouseenter', () => {
+        if (!isAnimating) {
+          isAnimating = true;
+          logo.style.transform = 'rotateY(180deg)';
+        }
+      });
+
+      logo.addEventListener('mouseleave', () => {
+        if(isAnimating) {
+            isAnimating= false;
+            logo.style.transform = 'rotateY(0deg)';
+        }
+      })
+  
+      logo.addEventListener('transitionend', () => {
+            if (!isAnimating) {
+                logo.style.transform = 'rotateY(0deg)';
+            }
+        });
+    });
+  </script>
+  
+{% endblock %}
+
+{% block body %}
+<div class="main-container">
+  <div class="logo-container">
+    <div class="logo" id="logo">
+      <div class="logo-inner">
+        <div class="logo-front">
+          <img src="{{ url_for('static', filename='/media/logo-index.PNG') }}" alt="Logo di BNP" class="logo-image">
+        </div>
+        <div class="logo-back">
+          <div class="logo-text">
+            La più grande community di calcetti a Bologna<br>
+            Più di 300 partite giocate insieme, <br>
+            3 tornei e 1100 membri nel gruppo!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="button-container">
+    <a href="{{ url_for('prenota_slot') }}" class="gioca-ora-btn">GIOCA ORA</a>
+</div>
+<div class="gallery-container">
+  <h2>Galleria</h2>
+  <div class="photo-gallery">
+      <img src="{{ url_for('static', filename='/media/murri.jpg') }}" alt="Murri">
+      <img src="{{ url_for('static', filename='/media/capocannonier.jpg') }}" alt="Capocannoniere">
+      <img src="{{ url_for('static', filename='/media/coppe.jpg') }}" alt="Coppe">
+
+  </div>
+  <div class="video-container">
+      <video width="512" height="288" controls>
+          <source src="{{ url_for('static', filename='/media/altro_torneo.MOV') }}" type="video/mp4">
+          Il tuo browser non supporta il tag video.
+      </video>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Prenota Ora</title>
+<meta charset='utf-8' />
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js'></script>
+{% endblock %}
+
+{% block body %}
+<h1>Prenota uno Slot</h1>
+
+    {% block messages %}
+        {{ super() }} 
+    {% endblock %}
+
+<div id='calendar'></div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <p>Data: <span id="modal-slot-data">{{ slotData }}</span></p>
+        <p>Orario: <span id="modal-slot-orario">{{ slotOrario }}</span></p>
+        <p>Posti Disponibili: <span id="modal-slot-posti_disponibili">{{ slotPosti_Disponibili }}</span></p>
+        <label for="numeroPersone">Numero di Persone:</label>
+        <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="{{ slotPosti_Disponibili }}" value="1">
+        <button class="modal-register-button">Prenota</button>
+    </div>
+</div>
+
+{% for slot in available_slots %}
+<div class="slot">
+    <p class="slot-data">Data: {{ slot.data }}</p>
+    <p class="slot-orario">Orario: {{ slot.orario }}</p>
+    <p class="slot-posti_disponibili">Posti Disponibili: {{ slot.posti_disponibili }}</p>
+    <button class="modal-register-button">Prenota</button>
+</div>
+{% endfor %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            events: "/get_available_slots",
+            eventRender: function(info) {
+                // Set "orario" as the title for each event
+                info.event.title = info.event.extendedProps.orario;
+            },
+            eventClick: function(info) {
+                console.log('Event clicked:', info);
+                var slotId = info.event.id; 
+                var slotData = info.event.extendedProps.data;
+                var slotOrario = info.event.extendedProps.orario;
+                var slotPosti_Disponibili = info.event.extendedProps.posti_disponibili;
+                
+                displayModal(slotId, slotData, slotOrario, slotPosti_Disponibili);
+            }
+        });
+        calendar.render();
+    });
+
+    document.querySelectorAll('.modal-register-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+            console.log('Prenota button clicked');
+            var numeroPersone = document.getElementById('numeroPersone').value;
+            registerSlot(slotId, numeroPersone);
+            modal.style.display = 'none';
+
+            window.location.reload();
+        });
+    });
+
+    function displayModal(slotId, slotData, slotOrario, slotPosti_Disponibili) {
+        console.log('Displaying modal for slot:', slotId);
+        var modal = document.getElementById('modal');
+        var modalSlotData = document.getElementById('modal-slot-data');
+        var modalSlotOrario = document.getElementById('modal-slot-orario');
+        var modalSlotPosti_Disponibili = document.getElementById('modal-slot-posti_disponibili');
+
+        modalSlotData.textContent = slotData;
+        modalSlotOrario.textContent = slotOrario;
+        modalSlotPosti_Disponibili.textContent = slotPosti_Disponibili;
+
+        modal.style.display = 'block';
+    }
+
+    function registerSlot(slotId, numeroPersone) {
+        var formData = new FormData();
+        formData.append('slot_id', slotId);
+        formData.append('numero_persone', numeroPersone);
+
+        fetch('/prenota_slot', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+<br>
+<a href="{{ url_for('index') }}">Torna alla Home</a>
+
+{% endblock %}

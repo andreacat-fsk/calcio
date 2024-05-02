@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+<div class="'login-form">
+<form action="/login" class="login-form" method="post">
+    <br>
+    <h1>Login</h1>
+    <div id="message-container">
+      {% if message %}
+          <div class="alert alert-success">{{ message }}</div>
+      {% endif %}
+  </div>
+    <div class="container">
+        {{ form.csrf_token }}
+        <label for="username"><b>Username</b></label>
+        {{ form.username(placeholder="Username", required=true) }}
+        <br>
+        <label for="password"><b>Password</b></label>
+        {{ form.password(placeholder="Password", required=true) }}
+        <br>
+        <input type="submit" value="Login">
+    </div>        
+</form>
+</div>
+{% endblock %}

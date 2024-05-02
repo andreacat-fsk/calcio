@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Register</title>
+{% endblock %}
+
+{% block body %}
+<div class="registration-form">
+<h1>Registration Form</h1>
+<form method="post" onsubmit="return validateForm()" id="registration-form">
+    {{ form.csrf_token }}
+    <div>
+        {{ form.username.label }} {{ form.username(size=20) }}
+    </div>
+    <div>
+        {{ form.email.label }} {{ form.email(size=20) }}
+    </div>
+    <div>
+        {{ form.numero.label }} {{ form.numero(size=20) }}
+    </div>
+    <div>
+        {{ form.password.label }} {{ form.password(size=20) }}
+    </div>
+    <div>
+        {{ form.password2.label }} {{ form.password2(size=20) }}
+    </div>
+    <div>
+        {{ form.referral_code.label }} {{ form.referral_code(size=20) }}
+    </div>
+    <div>
+        <input type="submit" value="Register">
+    </div>
+</form>
+</div>
+
+<script>
+function validateForm() {
+    var emailField = document.getElementById("email");
+    var passwordField = document.getElementById("password");
+    var usernameField = document.getElementById("username");
+    var referralCodeField = document.getElementById("referral_code");
+
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var passwordRegex = /^.{7,15}$/;
+    var usernameRegex = /^.{5,15}$/;
+    var referralCodeRegex = /^[a-zA-Z0-9]{6}$/;
+
+    if (!emailRegex.test(emailField.value)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    if (!passwordRegex.test(passwordField.value)) {
+        alert("Password must be 7 to 15 characters long.");
+        return false;
+    }
+
+    if (!usernameRegex.test(usernameField.value)) {
+        alert("Username must be 5 to 15 characters long.");
+        return false;
+    }
+
+    if (referralCodeField.value && !referralCodeRegex.test(referralCodeField.value)) {
+        alert("Referral code must be 6 characters long and consist of letters and numbers.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+{% endblock %}

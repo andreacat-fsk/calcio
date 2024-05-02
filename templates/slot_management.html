@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Slot Management</title>
+{% endblock %}
+
+{% block body %}
+<h1>Slot Management</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.data.label }}
+        {{ form.data(size=10, placeholder="YYYY-MM-DD", pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}") }}
+        <small>Format: YYYY-MM-DD</small>
+    </div>
+    <div>
+        {{ form.orario.label }}
+        {{ form.orario(size=5, placeholder="HH:mm", pattern="[0-9]{2}:[0-9]{2}") }}
+        <small>Format: HH:mm</small>
+    </div>
+    <div>
+        {{ form.posti_disponibili.label }}
+        {{ form.posti_disponibili() }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+
+{% if form.errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for field, errors in form.errors.items() %}
+        {% for error in errors %}
+        <li>{{ field }} - {{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<h2>Slot Orari</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Orario</th>
+            <th>Posti Disponibili</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for slot in slots %}
+            {% if current_user.role == 'admin' or (current_user.role == 'gestore' and slot.gestore == current_user) %}
+            <tr>
+                <td>{{ slot.id }}</td>
+                <td>{{ slot.data }}</td>
+                <td>{{ slot.orario }}</td>
+                <td>{{ slot.posti_disponibili }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('delete_slot', slot_id=slot.id) }}">
+                        <button type="submit" class="btn btn-danger">Elimina</button>
+                    </form>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+
+<h2>Prenotazioni</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Slot ID</th>
+            <th>Prenotato il</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for subscription in subscriptions %}
+            {% if current_user.role == 'admin' or (current_user.role == 'gestore' and subscription.slot.gestore_id == current_user.id) %}
+        <tr>
+                    <td>{{ subscription.user_numero }}</td>
+                    <td>{{ subscription.slot_id }}</td>
+                    <td>{{ subscription.prenotato_il }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<a href="{{ url_for('index') }}">Torna alla Home</a>
+{% endblock %}
